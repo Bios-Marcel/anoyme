@@ -1,0 +1,17 @@
+name: build
+
+on: push
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.18'
+      - run: go build -o anoyme.exe .
+      - uses: actions/upload-artifact@v3
+        with:
+          name: anoyme.exe
+          path: anoyme.exe 
